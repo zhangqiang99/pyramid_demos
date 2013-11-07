@@ -1,0 +1,54 @@
+<!DOCTYPE>
+<html>
+<head>
+  <title>The Pyramid Web Framework</title>
+  <script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+  <script src="//tinymce.cachefly.net/4.0/tinymce.min.js"></script>
+<script>
+       tinyMCE.init({
+           mode : "exact",
+           elements : "txtTextArea1,txtTextArea2",
+       });
+</script>
+  <script language="javascript" type="text/javascript">
+    function handleClick(e){
+       var x = prompt('clicked');
+       $('#tests').html(x);
+       var timeStr = $.ajax({url: "/servertime", async: false}).responseText;
+       $('#time').html(timeStr)
+       var ajaxtest1 = $.ajax({url: "/ajaxtest/"+ encodeURIComponent(x), async: false}).responseText;
+       $('#ajaxtest1').html(ajaxtest1)
+   }
+    $(document).ready(function(){
+        $('#button').click(handleClick);
+    })
+      
+    
+  </script>
+
+
+  
+
+</head>
+<body>
+<div id="tests">
+</div>
+<div id="time">
+</div>
+<div id="ajaxtest1">
+</div>
+<div id="mark1-form">
+  <form method="POST">
+    <form role="title">
+      <input type="text" name="title" id="title" value="${title}"/>
+    </form>
+    <button value="submit" id="button">Click</button>
+    <button type="submit" id="button1">Submit</button>
+  </form>
+   <textarea id="textarea1" class="mceEditor">Your content here.</textarea>
+   <textarea id="textarea1" class="mceEditor1">Your content here.</textarea>
+   <textarea id="txtTextArea1" name="txtTextArea1"></textarea>
+<textarea id="txtTextArea2" name="txtTextArea2"></textarea>
+</div>
+ </body>
+</html>
