@@ -33,6 +33,20 @@
       </div>
   <input type="submit" value="Submit">  
   </form>
-    
+<hr>
+<%!
+    import difflib
+%>
+% for a,b in cases:     
+        ${a}<br>
+	% for i,s in enumerate(difflib.ndiff(a,b)):
+	      % if '+' in s:
+	      	<span style="color:Red">${s}</span>
+	      % else:
+	      	<span>${s}</span>
+	      % endif
+	% endfor
+	
+% endfor
  </body>
 </html>

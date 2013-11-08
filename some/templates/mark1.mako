@@ -73,6 +73,7 @@
  	     });
 	    return false;
    }
+   
     $(document).ready(function(){
         $('#button').click(handleClick);
 	$('#button1').click(handleClick1);

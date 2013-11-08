@@ -10,6 +10,7 @@ from .models import (
     DBSession,
     MyModel,
     )
+from .diff_match_patch import diff_match_patch
 
 import difflib
 import cgi
@@ -48,9 +49,9 @@ def mark1(request):
 
 @view_config(route_name='check1', renderer="check1.mako")
 def check1(request):
-    cases=[['afrykanerskojzyczny', 'afrykanerskojzycznym'],
-       ['afrykanerskojzyczni', 'nieafrykanerskojzyczni']]
-    for a,b in cases:     
+    cases=[['afrykanerskojzyczni', 'nieafrykanerskojzyczni']]
+    diffs = []
+    for a,b in cases:
         print('{} => {}'.format(a,b))  
         for i,s in enumerate(difflib.ndiff(a, b)):
             if s[0]==' ': continue
@@ -72,7 +73,15 @@ def check1(request):
 
 @view_config(route_name='form1', renderer="form1.mako")
 def form1(request):
+    title = ""
+    some = ""
+    items = ['a','b','b','c']
+    if request.method == "POST":
+        some = request.POST['some']
     return {
+        'title': title,
+        'items': items,
+        'some': some,
         }
 
 @view_config(route_name='search1', renderer="json")
@@ -97,6 +106,11 @@ def serverTime(request):
 def ajaxtest(request):
     t = request.matchdict['mine']
     t = t + "mahesh"
+    return t
+
+@view_config(route_name="comment", renderer='string')
+def comment(request):
+    t = request.matchdict['mine']
     return t
 
 @view_config(route_name="filetest", renderer='mark2.mako')
