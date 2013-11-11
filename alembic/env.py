@@ -59,15 +59,10 @@ def run_migrations_online():
                 target_metadata=target_metadata
                 )
 
-    trans = connection.begin()
 
     try:
         with context.begin_transaction():
             context.run_migrations()
-            trans.commit()
-    except:
-        trans.rollback()
-        raise
     finally:
         connection.close()
 
@@ -75,13 +70,3 @@ if context.is_offline_mode():
     run_migrations_offline()
 else:
     run_migrations_online()
-
-from configuration import some
-from core.expense.models import * # added my model here
-
-alembic_config = config.get_section(config.config_ini_section)
-alembic_config['sqlalchemy.url'] = some.config['SQLALCHEMY_DATABASE_URI']
-engine = engine_from_config(
-    alembic_config,
-    prefix='sqlalchemy.',
-    poolclass=pool.NullPool)
