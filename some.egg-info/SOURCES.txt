@@ -6,8 +6,10 @@ production.ini
 setup.cfg
 setup.py
 some/__init__.py
+some/diff_match_patch.py
 some/models.py
 some/tests.py
+some/uploadsrequirements.txt
 some/views.py
 some.egg-info/PKG-INFO
 some.egg-info/SOURCES.txt
@@ -27,5 +29,14 @@ some/static/pylons.css
 some/static/pyramid-small.png
 some/static/pyramid.png
 some/static/transparent.gif
+some/static/typeahead.js/typeahead.js
+some/static/typeahead.js/typeahead.min.js
+some/templates/check1.mako
+some/templates/form1.mako
 some/templates/mark1.mako
+some/templates/mark2.mako
+some/templates/mark3.mako
 some/templates/mytemplate.pt
+some/uploads/requirements.txt
+some/uploads/site_view.mako
+some/uploads/site_view1.mako
