@@ -75,3 +75,13 @@ if context.is_offline_mode():
     run_migrations_offline()
 else:
     run_migrations_online()
+
+from configuration import some
+from core.expense.models import * # added my model here
+
+alembic_config = config.get_section(config.config_ini_section)
+alembic_config['sqlalchemy.url'] = some.config['SQLALCHEMY_DATABASE_URI']
+engine = engine_from_config(
+    alembic_config,
+    prefix='sqlalchemy.',
+    poolclass=pool.NullPool)
