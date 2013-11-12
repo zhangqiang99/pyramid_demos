@@ -12,12 +12,15 @@ down_revision = '3ecc7e7eefc'
 
 from alembic import op
 import sqlalchemy as sa
+from sqlalchemy import sql
+from sqlalchemy import Integer
 
 
 def upgrade():
-    op.rename_table('value2','value3')
+    op.alter_column(table_name = 'models',column_name = 'value2',nullable = False,server_default=False,new_column_name = 'value3',type_=Integer)
     
 
 
 def downgrade():
-    op.rename_table('value3','value2')
+    op.alter_column(table_name = 'models',column_name = 'value3',nullable = False,server_default=False,new_column_name = 'value2',type_=Integer)
+    
