@@ -23,4 +23,4 @@ class MyModel(Base):
     id = Column(Integer, primary_key=True)
     name2 = Column(Text)
     value = Column(Integer)
-    value2 = Column(Integer)
+    value3 = Column(Integer)
