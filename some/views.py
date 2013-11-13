@@ -47,6 +47,19 @@ def mark1(request):
         "title": title
         }
 
+@view_config(route_name='ajax1', renderer="ajax1.mako")
+def ajax1(request):
+    title = ""
+    return {
+        'title' : title
+        }
+
+@view_config(route_name='ajax2', request_method="POST", renderer="string")
+def ajax2(request):
+    postContent = request.POST['post-form']
+    print(postContent)
+    
+
 @view_config(route_name='check1', renderer="check1.mako")
 def check1(request):
     cases=[['afrykanerskojzyczni', 'nieafrykanerskojzyczni']]

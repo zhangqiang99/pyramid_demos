@@ -19,6 +19,8 @@ def main(global_config, **settings):
     config.add_static_view('static', 'static', cache_max_age=3600)
     config.add_route('home', '/')
     config.add_route('mark1', '/mark1')
+    config.add_route('ajax1', '/ajax1')
+    config.add_route('ajax2', '/ajax2')
     config.add_route('servertime', '/servertime')
     config.add_route('ajaxtest', '/ajaxtest/{mine}')
     config.add_route('comment', '/comment/{mine}')
