@@ -31,6 +31,7 @@ def main(global_config, **settings):
     config.add_route('follow', '/follow')
     config.add_route('form1', '/form1')
     config.add_route('todo', '/todo')
+    config.add_route('project', '/project')
     config.add_route('form2', '/form2')
     config.add_route('search1', '/search1.json')
     config.add_route('check1', '/check1')
