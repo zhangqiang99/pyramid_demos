@@ -27,7 +27,7 @@ $(document).ready(function(){
             }
 
             $(".post-form").attr("disabled", "disabled");
-
+	    
             $.ajax({
                 url: '/ajax2',
                 type: 'POST',
@@ -36,9 +36,42 @@ $(document).ready(function(){
                 
             });
 	    cache: false
+	    $.getJSON('/ajax3.json', function(data) {
+            			       var target = $('#result1 ul');
+            			       target.empty();
+            			       $.each(data, function (key, val) {
+                		       		       alert(val)
+            					       });
+ 			});
+	    
         });
     });
 </script>
+<script>
+$(function() {
+
+    function get_updates () {
+        $.getJSON('/updates.json', function(data) {
+            var target = $('#result ul');
+            target.empty();
+            $.each(data, function (key, val) {
+                target.append('<li>Update #' + val + '</li>');
+            });
+        });
+	
+    }
+
+    $('#sidebar').click(function () {
+        get_updates();
+	return false;
+    });
+   
+
+    
+});
+
+</script>
+
 
 </head>
 <body>
@@ -48,7 +81,13 @@ $(document).ready(function(){
             </form>
 
 <p>
-<div id="result"></div>
+<a id="sidebar" href="#">Click here</a>
+<div id="result">
+<ul></ul>
+</div>
+<div id="result1">
+<ul></ul>
+</div>
 </p>
 </body>
 </html>

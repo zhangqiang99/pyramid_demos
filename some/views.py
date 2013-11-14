@@ -55,15 +55,26 @@ def ajax1(request):
         'title' : title
         }
 
+x = 0
 @view_config(route_name='ajax2', request_method="POST", renderer="json")
 def ajax2(request):
     postContent = request.POST['post-form']
     print(postContent)
-    return {
-        "Mahesh"
-        }
-    
+    x = postContent
 
+@view_config(route_name='ajax3', renderer="json")
+def ajax3(request):
+    print("Mahesh")
+    return [
+        "maheshlll"
+        ]
+
+@view_config(route_name='updates',renderer="json")
+def updates(request):
+    return [
+        "mahesh",
+        "asoke",
+        ]
 
 @view_config(route_name='check1', renderer="check1.mako")
 def check1(request):
