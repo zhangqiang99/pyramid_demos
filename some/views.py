@@ -4,6 +4,7 @@ from datetime import datetime
 from sqlalchemy.exc import DBAPIError
 import os
 import shutil
+import json
 from pyramid.httpexceptions import HTTPFound
 
 from .models import (
@@ -54,11 +55,15 @@ def ajax1(request):
         'title' : title
         }
 
-@view_config(route_name='ajax2', request_method="POST", renderer="string")
+@view_config(route_name='ajax2', request_method="POST", renderer="json")
 def ajax2(request):
     postContent = request.POST['post-form']
     print(postContent)
+    return {
+        "Mahesh"
+        }
     
+
 
 @view_config(route_name='check1', renderer="check1.mako")
 def check1(request):
