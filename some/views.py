@@ -55,6 +55,11 @@ def ajax1(request):
         'title' : title
         }
 
+@view_config(route_name='todo', renderer="todo.mako")
+def todo(request):
+    return {
+        }
+
 x = 0
 @view_config(route_name='ajax2', request_method="POST", renderer="json")
 def ajax2(request):
@@ -112,6 +117,13 @@ def form1(request):
         'items': items,
         'some': some,
         }
+
+@view_config(route_name='form2', renderer="json")
+def form2(request):
+    c = request.POST['post-sub']
+    return [
+        c
+        ]
 
 @view_config(route_name='search1', renderer="json")
 def search1(request):

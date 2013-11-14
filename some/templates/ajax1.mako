@@ -2,7 +2,7 @@
 <html>
 <head>
   <title>The Pyramid Web Framework</title>
-  <script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+  <script src="../static/jquery.js"></script>
   <script src="//tinymce.cachefly.net/4.0/tinymce.min.js"></script>
 <script>
        tinyMCE.init({
@@ -33,6 +33,10 @@ $(document).ready(function(){
                 type: 'POST',
                 data: 'post-form='+postcontent,
                 dataType: 'text',
+		success: function(data, textStatus, jqXHR)
+    		{
+		
+    	      	 },
                 
             });
 	    cache: false
@@ -48,6 +52,24 @@ $(document).ready(function(){
     });
 </script>
 <script>
+ $(function() {
+
+    function get_comments () {
+        $( "#ajax-comment" ).toggle( "fast", function() {
+	       $("#ajax-comment").load("/form1");	       		   
+ 	     });
+    }
+
+    $('#comment').click(function () {
+        get_comments();
+	return false;
+    });
+   
+
+    
+});
+</script>
+<script>
 $(function() {
 
     function get_updates () {
@@ -58,7 +80,6 @@ $(function() {
                 target.append('<li>Update #' + val + '</li>');
             });
         });
-	
     }
 
     $('#sidebar').click(function () {
@@ -82,6 +103,10 @@ $(function() {
 
 <p>
 <a id="sidebar" href="#">Click here</a>
+<a id="comment" href="#">Click comment</a>
+<div id="ajax-comment">
+</div>
+
 <div id="result">
 <ul></ul>
 </div>

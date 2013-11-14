@@ -7,7 +7,13 @@
    function handleClick1(e){
        var z = $('#ftitle').val();
        var y = $.parseHTML( z );
-       var ajaxtest1 = $.ajax({url: "/comment/"+ encodeURIComponent(y), async: false}).responseText;
+       var ajaxtest1 = $.ajax({
+       	   	     url: "/form2",
+		     type: 'POST',
+		     data: 'post-sub='+z,
+		     dataType: 'text',
+		     
+		   }).responseText;
        $('#some').html(ajaxtest1)
        $('#fmark1-form').hide()
        
