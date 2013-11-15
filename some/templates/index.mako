@@ -7,12 +7,10 @@
     <script src="https://cdn.firebase.com/v0/firebase.js"></script>
     <script src="http://firebase.github.io/angularFire/angularFire.js"></script>
     <script src="../static/project.js"></script>
+    
   </head>
   <body>
     <h2>JavaScript Projects</h2>
     <div ng-view></div>
-    <div ng-app="">
-      <p>{{2 + 2}}</p>
-    </div>
   </body>
 </html>

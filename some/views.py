@@ -55,6 +55,24 @@ def ajax1(request):
         'title' : title
         }
 
+@view_config(route_name='list', renderer="list.mako")
+def list(request):
+    return {
+        }
+
+@view_config(route_name='new', renderer="detail.mako")
+def new(request):
+    return {
+        }
+
+@view_config(route_name='edit',renderer="detail.mako" )
+def edit(request):
+    projectId = request.matchdict['project_id']
+    return {
+        'projectId': projectId
+        }
+
+
 @view_config(route_name='todo', renderer="todo.mako")
 def todo(request):
     return {

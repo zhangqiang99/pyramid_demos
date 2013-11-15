@@ -5,9 +5,9 @@ angular.module('project', ['ngRoute', 'firebase']).
   }).
   config(function($routeProvider) {
     $routeProvider.
-      when('/', {controller:ListCtrl, templateUrl:'../templates/list.html'}).
-      when('/edit/:projectId', {controller:EditCtrl, templateUrl:'../templates/detail.html'}).
-      when('/new', {controller:CreateCtrl, templateUrl:'../templates/detail.html'}).
+      when('/list', {controller:ListCtrl).
+      when('/edit/:projectId', {controller:EditCtrl}).
+      when('/new', {controller:CreateCtrl}).
       otherwise({redirectTo:'/'});
   });
  
@@ -18,7 +18,7 @@ function ListCtrl($scope, Projects) {
 function CreateCtrl($scope, $location, $timeout, Projects) {
   $scope.save = function() {
     Projects.add($scope.project, function() {
-      $timeout(function() { $location.path('/'); });
+      $timeout(function() { $location.path('/list'); });
     });
   }
 }
@@ -33,11 +33,11 @@ function EditCtrl($scope, $location, $routeParams, angularFire, fbURL) {
     }
     $scope.destroy = function() {
       $scope.remote = null;
-      $location.path('/');
+      $location.path('/list');
     };
     $scope.save = function() {
       $scope.remote = angular.copy($scope.project);
-      $location.path('/');
+      $location.path('/list');
     };
   });
 }
