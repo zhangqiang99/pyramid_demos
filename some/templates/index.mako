@@ -12,5 +12,10 @@
   <body>
     <h2>JavaScript Projects</h2>
     <div ng-view></div>
+    <div>
+      <div data-ng-repeat="user in users">
+	<h2>{{user}}</h2>
+      </div>
+    </div>
   </body>
 </html>
