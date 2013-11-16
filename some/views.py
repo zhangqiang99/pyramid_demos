@@ -81,9 +81,9 @@ def todo(request):
 @view_config(route_name='project', renderer="index.mako")
 def project(request):
     users = ["mahesh", "hari"]
-    return {
-        'users': users
-        }
+    return [
+        users
+        ]
 
 x = 0
 @view_config(route_name='ajax2', request_method="POST", renderer="json")
