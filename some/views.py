@@ -78,11 +78,27 @@ def todo(request):
     return {
         }
 
+class Friends:
+    def __init__(self,name,phone):
+        self.name = name
+        self.phone = phone
+
+class MyEncoder(json.JSONEncoder):
+    def default(self, obj):
+        if not isinstance(obj, Friends):
+            return super(MyEncoder, self).default(obj)
+
+        return obj.__dict__
+
 @view_config(route_name='project', renderer="index.mako")
 def project(request):
     users = ["mahesh", "hari"]
+    a = Friends(name='John', phone='555-1276')
+    b = Friends(name='John', phone='555-1276')
+    friends = [a,b]
     return {
-        'users': json.dumps(users),
+        'friends': json.dumps(users),
+        'users': json.dumps(friends,cls=MyEncoder),
         }
 
 x = 0
