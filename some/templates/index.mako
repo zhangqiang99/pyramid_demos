@@ -26,14 +26,24 @@ app.controller('FirstCtrl', function($scope, $resource) {
         <div data-ng-repeat="user in users">
         <h2>{{user.name}}</h2>
 	 <h2>{{user.phone}}</h2>
+	 
       </div>
+	Search: <input ng-model="searchText">
+    <table id="searchTextResults">
+      <tr><th>Name</th><th>Phone</th></tr>
+      <tr ng-repeat="user in users | filter:searchText">
+        <td>{{user.name}}</td>
+        <td>{{user.phone}}</td>
+      </tr>
+    </table>
+    <hr>
 <div ng-controller="FirstCtrl">    
     Search: <input ng-model="searchText">
     <table id="searchTextResults">
       <tr><th>Name</th><th>Phone</th></tr>
-      <tr ng-repeat="friend in friends | filter:searchText">
-        <td>{{friend.name}}</td>
-        <td>{{friend.phone}}</td>
+      <tr ng-repeat="user in users | filter:searchText">
+        <td>{{user.name}}</td>
+        <td>{{user.phone}}</td>
       </tr>
     </table>
     <hr>

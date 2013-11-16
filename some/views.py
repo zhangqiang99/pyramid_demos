@@ -94,7 +94,7 @@ class MyEncoder(json.JSONEncoder):
 def project(request):
     users = ["mahesh", "hari"]
     a = Friends(name='John', phone='555-1276')
-    b = Friends(name='John', phone='555-1276')
+    b = Friends(name='Mahesh', phone='555-1276')
     friends = [a,b]
     return {
         'friends': json.dumps(users),
