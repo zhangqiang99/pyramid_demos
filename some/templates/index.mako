@@ -19,6 +19,14 @@ app.controller('FirstCtrl', function($scope, $resource) {
     //now it's safe to access $scope.data's properties:
   });
 });
+function StartUpController($scope) {
+   $scope.computeNeeded = function() {
+   $scope.needed = $scope.startingEstimate * 10;
+};
+   $scope.requestFunding = function() {
+   window.alert("Sorry, please get more customers first.");
+};
+}
 
     </script>
   </head>
@@ -47,6 +55,13 @@ app.controller('FirstCtrl', function($scope, $resource) {
       </tr>
     </table>
     <hr>
+</div>
+<div ng-controller="StartUpController">
+  <form ng-submit="requestFunding()">
+Starting: <input ng-change="computeNeeded()" ng-model="startingEstimate">
+Recommendation: {{needed}}
+<button>Fund my startup!</button>
+</form>
 </div>
   </body>
 </html>
