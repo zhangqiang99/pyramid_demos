@@ -18,6 +18,7 @@ app.controller('FirstCtrl', function($scope, $resource) {
     $scope.loaded = true;
     //now it's safe to access $scope.data's properties:
   });
+ 
 });
 function StartUpController($scope) {
    $scope.computeNeeded = function() {
@@ -29,10 +30,11 @@ function StartUpController($scope) {
 }
 function StartUp1Controller($scope) {
    $scope.computeNeeded = function() {
-           $scope.needed = $scope.startingEstimate * 10;
+       $scope.needed = $scope.startingEstimate * 10;
 };
+
    $scope.requestFunding = function() {
-   window.alert("Sorry, please get more customers first.");
+       window.alert("Sorry, please get more customers first.");
 };
 }
 function FullstackController($scope) {
@@ -63,7 +65,7 @@ function FullstackController($scope) {
     Search: <input ng-model="searchText">
     <table id="searchTextResults">
       <tr><th>Name</th><th>Phone</th></tr>
-      <tr ng-repeat="user in users | filter:searchText">
+      <tr ng-repeat="user in users | filter:searchText | filter:customFilter">
         <td>{{user.name}}</td>
         <td>{{user.phone}}</td>
       </tr>
@@ -78,11 +80,13 @@ Recommendation: {{needed}}
 </form>
 </div>
 <div ng-controller="StartUp1Controller">
-  <form ng-submit="requestFunding()">
+<div>
+  <form ng-submit="requestFunding()" >
 Starting: <input ng-change="computeNeeded()" ng-model="startingEstimate">
 Recommendation: {{needed}}
 <button>Fund my startup!</button>
 </form>
+</div>
 </div>
 <div ng-controller="FullstackController">
 <div ng-show="formShow.show">

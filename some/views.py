@@ -79,9 +79,10 @@ def todo(request):
         }
 
 class Friends:
-    def __init__(self,name,phone):
+    def __init__(self,name,phone,tag):
         self.name = name
         self.phone = phone
+        self.tag = tag
 
 class MyEncoder(json.JSONEncoder):
     def default(self, obj):
@@ -93,8 +94,8 @@ class MyEncoder(json.JSONEncoder):
 @view_config(route_name='project', renderer="index.mako")
 def project(request):
     users = ["mahesh", "hari"]
-    a = Friends(name='John', phone='555-1276')
-    b = Friends(name='Mahesh', phone='555-1276')
+    a = Friends(name='John', phone='555-1276', tag="Physics")
+    b = Friends(name='Mahesh', phone='55', tag="Maths")
     friends = [a,b]
     return {
         'friends': json.dumps(users),
