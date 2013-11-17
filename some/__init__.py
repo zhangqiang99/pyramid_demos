@@ -20,6 +20,7 @@ def main(global_config, **settings):
     config.add_route('home', '/')
     config.add_route('mark1', '/mark1')
     config.add_route('ajax1', '/ajax1')
+    config.add_route('angular', '/angular')
     config.add_route('list', '/list')
     config.add_route('edit', '/edit/{projectId}')
     config.add_route('new', '/new')

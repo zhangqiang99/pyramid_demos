@@ -78,6 +78,11 @@ def todo(request):
     return {
         }
 
+@view_config(route_name='angular', renderer="angular.mako")
+def angular(request):
+    return {
+        }
+
 class Friends:
     def __init__(self,name,phone,tag):
         self.name = name
