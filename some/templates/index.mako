@@ -21,10 +21,24 @@ app.controller('FirstCtrl', function($scope, $resource) {
 });
 function StartUpController($scope) {
    $scope.computeNeeded = function() {
-   $scope.needed = $scope.startingEstimate * 10;
+           $scope.needed = $scope.startingEstimate * 10;
 };
    $scope.requestFunding = function() {
    window.alert("Sorry, please get more customers first.");
+};
+}
+function StartUp1Controller($scope) {
+   $scope.computeNeeded = function() {
+           $scope.needed = $scope.startingEstimate * 10;
+};
+   $scope.requestFunding = function() {
+   window.alert("Sorry, please get more customers first.");
+};
+}
+function FullstackController($scope) {
+   $scope.formShow.show = false;
+   $scope.requestSubmit = function() {
+      window.alert("Sorry, please get more customers first.");
 };
 }
 
@@ -63,5 +77,23 @@ Recommendation: {{needed}}
 <button>Fund my startup!</button>
 </form>
 </div>
+<div ng-controller="StartUp1Controller">
+  <form ng-submit="requestFunding()">
+Starting: <input ng-change="computeNeeded()" ng-model="startingEstimate">
+Recommendation: {{needed}}
+<button>Fund my startup!</button>
+</form>
+</div>
+<div ng-controller="FullstackController">
+<div ng-show="formShow.show">
+  <form>
+    <input ng-model="myValue">
+    <button ng-click="requestSubmit()">Submit</button>
+  </form>
+</div>
+</div>
+<form>
+<button>Submit</button>
+</form>
   </body>
 </html>
