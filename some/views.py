@@ -121,9 +121,7 @@ def angularresult(request):
     result = 23
     if request.method == "POST":
         r = json.loads('postData')
-        print(2)
         obj = json.JSONDecoder().decode(r)
-        print(2)
         result = obj.result
         print(result)
     return {
