@@ -122,8 +122,7 @@ def angularresult(request):
     if request.method == "POST":
         t = request.json_body
         print(t)
-        j = json.loads(t)
-        print(j['result'])
+        print(t['result'])
         print(result)
     return {
         'result': json.dumps(result)
