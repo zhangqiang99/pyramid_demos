@@ -32,10 +32,7 @@ app.controller('StartUpController', function($scope, $http, myService, mypostSer
 	 $scope.increase = function(){
 	 	$scope.upvotes = $scope.upvotes + 1;
          };
-         myService.getFooOldSchool(function(data) {
-                $scope.result = data;
-         });
-         mypostService.postFooOldSchool(function(postData, data) {
+          mypostService.postFooOldSchool(function(postData, data) {
                 
          });
          myService.getFooOldSchool(function(data) {
