@@ -36,7 +36,7 @@ app.controller('StartUpController', function($scope, $http, myService, mypostSer
                 $scope.result = data;
          });
          mypostService.postFooOldSchool(function(data) {
-                $scope.result = data;
+                $scope.result1 = data;
          });
 });
 
@@ -51,6 +51,7 @@ app.controller('StartUpController', function($scope, $http, myService, mypostSer
       <h1>Hello {{yourName}}!</h1>
       <h2>{{upvotes}}</h2><h2>{{serverupvotes}}</h2>
       <h2>{{result.result}}</h2>
+      <h2>{{result1}}</h2>
     </div>
   </body>
 </html>
