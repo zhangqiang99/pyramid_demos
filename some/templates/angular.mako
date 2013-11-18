@@ -13,11 +13,11 @@ app.factory('myService', function($http) {
      }
    }
 });
-var postData = {result: '20'};
+var postData = {'result': '20'};
 app.factory('mypostService', function($http) {
    return {
      postFooOldSchool: function(callback) {
-       $http.post('/angularresult', postData
+       $http.post('/angularresult', JSON.stringify(postData)
        ).success(function(data, status, headers){
 
        }).error(function(data, status, headers){

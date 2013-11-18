@@ -120,9 +120,10 @@ def ajax2(request):
 def angularresult(request):
     result = 23
     if request.method == "POST":
-        r = json.loads('postData')
-        obj = json.JSONDecoder().decode(r)
-        result = obj.result
+        t = request.json_body
+        print(t)
+        j = json.loads(t)
+        print(j['result'])
         print(result)
     return {
         'result': json.dumps(result)
