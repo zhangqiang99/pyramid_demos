@@ -80,7 +80,9 @@ def todo(request):
 
 @view_config(route_name='angular', renderer="angular.mako")
 def angular(request):
+    result = 20
     return {
+            'result': json.dumps(result)
         }
 
 class Friends:
@@ -113,6 +115,13 @@ def ajax2(request):
     postContent = request.POST['post-form']
     print(postContent)
     x = postContent
+
+@view_config(route_name='angularresult', request_method="GET", renderer="json")
+def angularresult(request):
+    result = 23
+    return {
+        'result': json.dumps(result)
+        }
 
 @view_config(route_name='ajax3', renderer="json")
 def ajax3(request):

@@ -6,13 +6,23 @@
     </script>
 <script>
 var app = angular.module('posting',[]);
-
-app.controller('StartUpController', function($scope) {
+app.factory('myService', function($http) {
+   return {
+     getFooOldSchool: function(callback) {
+       $http.get('angularresult').success(callback);
+     }
+   }
+});
+app.controller('StartUpController', function($scope, $http, myService) {
          $scope.upvotes = 0;
 	 $scope.serverupvotes = 0;
 	 $scope.increase = function(){
 	 	$scope.upvotes = $scope.upvotes + 1;
+                
 	 };
+         myService.getFooOldSchool(function(data) {
+                $scope.result = data;
+         });
 });
 
 </script>
@@ -24,7 +34,8 @@ app.controller('StartUpController', function($scope) {
       <button ng-click="increase()">Upvote</button>
       <hr>
       <h1>Hello {{yourName}}!</h1>
-      <h2>{{upvotes}}</h2><h2>{{serverupvotes}}</h2>	
+      <h2>{{upvotes}}</h2><h2>{{serverupvotes}}</h2>
+      <h2>{{result.result}}</h2>
     </div>
   </body>
 </html>
