@@ -116,9 +116,12 @@ def ajax2(request):
     print(postContent)
     x = postContent
 
-@view_config(route_name='angularresult', request_method="GET", renderer="json")
+@view_config(route_name='angularresult',  renderer="json")
 def angularresult(request):
     result = 23
+    if request.method == "POST":
+        result = request.POST['result']
+        print(result)
     return {
         'result': json.dumps(result)
         }

@@ -13,14 +13,29 @@ app.factory('myService', function($http) {
      }
    }
 });
-app.controller('StartUpController', function($scope, $http, myService) {
+var postData = {result: '20'};
+app.factory('mypostService', function($http) {
+   return {
+     postFooOldSchool: function(callback) {
+       $http.post('/angularresult', postData
+       ).success(function(data, status, headers){
+
+       }).error(function(data, status, headers){
+ 
+       });
+     }
+   }
+});
+app.controller('StartUpController', function($scope, $http, myService, mypostService) {
          $scope.upvotes = 0;
 	 $scope.serverupvotes = 0;
 	 $scope.increase = function(){
 	 	$scope.upvotes = $scope.upvotes + 1;
-                
-	 };
+         };
          myService.getFooOldSchool(function(data) {
+                $scope.result = data;
+         });
+         mypostService.postFooOldSchool(function(data) {
                 $scope.result = data;
          });
 });
