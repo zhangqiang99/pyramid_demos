@@ -13,10 +13,10 @@ app.factory('myService', function($http) {
      }
    }
 });
-var postData = {'result': '20'};
+var postData = {'result': '27'};
 app.factory('mypostService', function($http) {
    return {
-     postFooOldSchool: function(callback) {
+     postFooOldSchool: function() {
        $http.post('/angularresult', JSON.stringify(postData)
        ).success(function(data, status, headers){
 
@@ -35,7 +35,11 @@ app.controller('StartUpController', function($scope, $http, myService, mypostSer
          myService.getFooOldSchool(function(data) {
                 $scope.result = data;
          });
-         mypostService.postFooOldSchool(function(data) {
+         mypostService.postFooOldSchool(function(postData, data) {
+                
+         });
+         myService.getFooOldSchool(function(data) {
+                $scope.result = data;
          });
 });
 
