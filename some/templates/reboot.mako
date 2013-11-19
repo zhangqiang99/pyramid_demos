@@ -11,6 +11,12 @@ function Ctrl($scope) {
     , { name: 'template2.html', url: '/ajax1'} ];
   $scope.template = $scope.templates[0];
 }
+function Ctrl1($scope) {
+  $scope.load = function(){
+       $scope.template = '/form1'
+  };
+ 
+}
 
 </script>
 <style>
@@ -71,5 +77,17 @@ function Ctrl($scope) {
   <script type="text/ng-template" id="template2.html">
     <div>loaded home 2</div>
 </script>
+<div ng-controller="Ctrl1">
+<button ng-click="load()">CLick here</button>
+<div>
+     <div ng-include="template"></div>
+</div>
+</div>
+<div ng-controller="Ctrl1">
+<button ng-click="load()">CLick here</button>
+<div>
+     <div ng-include="template"></div>
+</div>
+</div>
   </body>
 </html>
