@@ -21,6 +21,7 @@ def main(global_config, **settings):
     config.add_route('mark1', '/mark1')
     config.add_route('ajax1', '/ajax1')
     config.add_route('angular', '/angular')
+    config.add_route('reboot', '/reboot')
     config.add_route('test-angular', '/test-angular')
     config.add_route('angularresult', '/angularresult')
     config.add_route('list', '/list')

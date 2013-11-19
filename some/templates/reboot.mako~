@@ -1,0 +1,14 @@
+<!doctype html>
+<html ng-app="posting">
+  <head>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.1/angular.min.js"></script>
+       <script src="http://code.angularjs.org/1.2.1/angular-sanitize.min.js"></script>
+<script>
+
+
+</script>
+  </head>
+  <body>
+   
+  </body>
+</html>
