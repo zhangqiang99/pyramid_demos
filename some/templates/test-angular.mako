@@ -1,8 +1,8 @@
 <!doctype html>
 <html >
   <head>
-    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.0/angular.min.js"></script>
-       <script src="http://code.angularjs.org/1.2.0/angular-sanitize.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.1/angular.min.js"></script>
+       <script src="http://code.angularjs.org/1.2.1/angular-sanitize.min.js"></script>
 <script>
 var app = angular.module('myApp', []);
 
@@ -43,6 +43,16 @@ function Ctrl2($scope, items) {
     <form ng-submit="add(newItem); newItem = '';">
         <input type="text" placeholder="new item..." ng-model="newItem">
         <br />
+	<p>{{newItem}}</p>
+        <input class="btn" type="submit">
+    </form>
+</div>
+<div ng-controller="Ctrl2">
+    <h2>Ctrl2 - Add</h2>
+    <form ng-submit="add(newItem); newItem = '';">
+        <input type="text" placeholder="new item..." ng-model="newItem">
+        <br />
+         <p>{{newItem}}</p>
         <input class="btn" type="submit">
     </form>
 </div>
