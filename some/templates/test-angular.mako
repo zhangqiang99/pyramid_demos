@@ -27,6 +27,8 @@ function Ctrl1($scope,items) {
 function Ctrl2($scope, items) {
     $scope.add = items.add;
 }
+function Ctrl3($scope) {
+}
 
 </script>
   </head>
@@ -55,6 +57,14 @@ function Ctrl2($scope, items) {
          <p>{{newItem}}</p>
         <input class="btn" type="submit">
     </form>
+</div>
+<div ng-controller="Ctrl3">
+<input type="text" ng-model="data.message">
+  <h1>{{data.message + " world"}}</h1>
+</div>
+<div ng-controller="Ctrl3">
+<input type="text" ng-model="data.message">
+  <h1>{{data.message + " world"}}</h1>
 </div>
 
   </body>
