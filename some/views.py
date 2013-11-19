@@ -65,6 +65,11 @@ def new(request):
     return {
         }
 
+@view_config(route_name='test-angular', renderer="test-angular.mako")
+def test_angular(request):
+    return {
+        }
+
 @view_config(route_name='edit',renderer="detail.mako" )
 def edit(request):
     projectId = request.matchdict['project_id']
