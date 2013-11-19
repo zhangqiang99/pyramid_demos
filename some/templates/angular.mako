@@ -1,11 +1,10 @@
 <!doctype html>
 <html ng-app="posting">
   <head>
-    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.0/angular.min.js"></script>
- 
-    </script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.1/angular.min.js"></script>
+       <script src="http://code.angularjs.org/1.2.1/angular-sanitize.min.js"></script>
 <script>
-var app = angular.module('posting',[]);
+var app = angular.module('posting',['ngSanitize']);
 app.factory('myService', function($http) {
    return {
      getFooOldSchool: function(callback) {
@@ -31,7 +30,26 @@ app.controller('StartUpController', function($scope, $http, myService, mypostSer
 	 $scope.serverupvotes = 0;
 	 $scope.increase = function(){
 	 	$scope.upvotes = $scope.upvotes + 1;
+                var x = $scope.upvotes;
+                var postObject = {'result': x};
+                $http.post('/angularresult', JSON.stringify(postObject)).success(function(data){
+                });
+                myService.getFooOldSchool(function(data) {
+                   $scope.result1 = data;
+
+         });
          };
+         $scope.addhtml = function(){
+                $scope.customHtml = '<ul><li>Mahesh</li></ul>';
+	 
+         };
+         $scope.tabs = [
+               {title:'Home', page: '/form1'},
+               {title:'Profile', page: '/ajax1'},
+         ];
+         myService.getFooOldSchool(function(data) {
+                $scope.result1 = data;
+         });
           mypostService.postFooOldSchool(function(postData, data) {
                 
          });
@@ -46,11 +64,17 @@ app.controller('StartUpController', function($scope, $http, myService, mypostSer
     <div ng-controller="StartUpController" >
       <label>Name:</label>
       <input type="text" ng-model="yourName" placeholder="Enter a name here">
-      <button ng-click="increase()">Upvote</button>
+      <button ng-click="increase()">{{upvotes}}Upvote</button>
+
+      <button ng-click="addhtml()">Add</button>
       <hr>
       <h1>Hello {{yourName}}!</h1>
       <h2>{{upvotes}}</h2><h2>{{serverupvotes}}</h2>
       <h2>{{result.result}}</h2>
+      <h2>{{result1.result}}</h2>
+      <div ng-bind-html="customHtml">{{customHtml}}</div>
+        <div ng-include src="tabs[tabs.activeTab].page"></div>
+
     </div>
   </body>
 </html>
