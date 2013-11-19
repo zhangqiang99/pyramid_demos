@@ -34,10 +34,11 @@ app.controller('StartUpController', function($scope, $http, myService, mypostSer
                 var postObject = {'result': x};
                 $http.post('/angularresult', JSON.stringify(postObject)).success(function(data){
                 });
-                myService.getFooOldSchool(function(data) {
-                   $scope.result1 = data;
-
-         });
+                $http.get('/angularresult').success(function(data){
+                    $scope.result1 = data;
+                });
+                
+                
          };
          $scope.addhtml = function(){
                 $scope.customHtml = '<ul><li>Mahesh</li></ul>';
