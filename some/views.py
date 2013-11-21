@@ -59,10 +59,11 @@ def mark1(request):
 
 @view_config(route_name='version', renderer="version.mako")
 def version(request):
-    ver1 = "Myself"
-    ver2 = "Mahesh"
-    merger = mim_module.Merger()
-    diff = merger.diff_make(ver1, ver2)
+    ver1 = """<p>i love it</p>"""
+    ver2 = """<h2>i love it </p>"""
+    import difflib
+    htmldiff = difflib.HtmlDiff()
+    diff = htmldiff.make_file([ver1], [ver2]) 
     return {
         "ver1": ver1,
         "ver2": ver2,
