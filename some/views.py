@@ -7,6 +7,15 @@ import shutil
 import json
 from pyramid.httpexceptions import HTTPFound
 
+import some.merge_in_memory as mim_module
+
+#str1 = """line 1
+#line 2"""
+#str2 = """line 1
+#line 2 changed"""
+
+
+
 from .models import (
     DBSession,
     MyModel,
@@ -46,6 +55,18 @@ def mark1(request):
     title = ""
     return {
         "title": title
+        }
+
+@view_config(route_name='version', renderer="version.mako")
+def version(request):
+    ver1 = "Myself"
+    ver2 = "Mahesh"
+    merger = mim_module.Merger()
+    diff = merger.diff_make(ver1, ver2)
+    return {
+        "ver1": ver1,
+        "ver2": ver2,
+        "diff": diff,
         }
 
 @view_config(route_name='ajax1', renderer="ajax1.mako")
