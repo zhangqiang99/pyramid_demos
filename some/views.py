@@ -60,14 +60,31 @@ def mark1(request):
 @view_config(route_name='version', renderer="version.mako")
 def version(request):
     ver1 = """<p>i love it</p>"""
-    ver2 = """<h2>i love it </p>"""
-    import difflib
-    htmldiff = difflib.HtmlDiff()
-    diff = htmldiff.make_file([ver1], [ver2]) 
+    ver2 = """<p>i love me</p>"""
+    ver3 = """<p>i love you jhsd</p>"""
+    import some.diff_match_patch as diff_match_patch
+    dmp = diff_match_patch.diff_match_patch()
+    dmp.Diff_Timeout = 0
+    diffs = dmp.diff_main(ver1, ver3)
+    print(diffs)
+    diff1 = dmp.diff_prettyHtml(diffs)
+    print(diff1)
+    diff2 = dmp.patch_make(ver1, ver2)
+    diff3 = dmp.patch_make(ver2, ver3)
+    diff5 = dmp.patch_make(ver3, ver2)
+    print(diff5)
+    print(diff2)
+    patch_text = dmp.patch_toText(diff2)
+    patch1 = dmp.patch_fromText(patch_text)
+    print(patch_text)
+    diff = dmp.patch_apply(patch1, ver1)
+    diff4 = dmp.patch_apply(diff5, ver3)
+    print(diff[0])
     return {
         "ver1": ver1,
         "ver2": ver2,
         "diff": diff,
+        "diff1": diff1,
         }
 
 @view_config(route_name='ajax1', renderer="ajax1.mako")
