@@ -57,6 +57,11 @@ def mark1(request):
         "title": title
         }
 
+@view_config(route_name='zippy', renderer="zippy.mako")
+def mark1(request):
+    return {
+        }
+
 @view_config(route_name='version', renderer="version.mako")
 def version(request):
     ver1 = """<p>i love it</p>"""

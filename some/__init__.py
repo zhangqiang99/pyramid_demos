@@ -21,6 +21,7 @@ def main(global_config, **settings):
     config.add_route('mark1', '/mark1')
     config.add_route('version', '/version')
     config.add_route('ajax1', '/ajax1')
+    config.add_route('zippy', '/zippy')
     config.add_route('angular', '/angular')
     config.add_route('reboot', '/reboot')
     config.add_route('test-angular', '/test-angular')
