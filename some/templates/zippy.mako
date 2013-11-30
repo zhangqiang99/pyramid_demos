@@ -4,7 +4,14 @@
     <script src="http://code.angularjs.org/1.2.3/angular.min.js"></script>
     <script type="text/javascript">
   angular.module('docsIsoFnBindExample', [])
-  .controller('Ctrl', function($scope, $timeout) {
+  .controller('Ctrl', function($scope) {
+           $scope.open = function(){
+                 return {
+                 restrict: 'E',
+                 transclude: true,
+                 templateUrl: '/form1'
+    };
+  }
   })
   .directive('myDialog', function() {
     return {
@@ -17,6 +24,8 @@
   </head>
   <body>
     <div ng-controller="Ctrl">
+      <button ng-click="open()">Open</button>
+      <div >{{temple}}</div>
       <my-dialog>
       </my-dialog>
     </div>
