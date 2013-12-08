@@ -3,13 +3,30 @@
 <head>
   <title>The Pyramid Web Framework</title>
   <script src="../static/jquery.js"></script>
-  <script src="//tinymce.cachefly.net/4.0/tinymce.min.js"></script>
-<script>
-       tinyMCE.init({
-           mode : "exact",
-           elements : "txtTextArea1,txtTextArea2,post-form",
-       });
+
+<script type="text/javascript" src="/static/tinymce/jscripts/tiny_mce/tiny_mce.js"></script>
+<script type="text/javascript">
+tinyMCE.init({
+    mode : "textareas",
+    theme : "advanced",
+    theme_advanced_buttons1 : "bold,italic,underline,separator,strikethrough,justifyleft,justifycenter,justifyright, justifyfull,bullist,numlist,undo,redo,link,unlink",
+    theme_advanced_buttons2 : "",
+    theme_advanced_buttons3 : "",
+    theme_advanced_toolbar_location : "top",
+    theme_advanced_toolbar_align : "left",
+    theme_advanced_statusbar_location : "bottom",
+    plugins : 'inlinepopups',
+    
+});
 </script>
+
+<style>
+div[mce_name="o:title"] {
+  background-image:url(/images/title_tag.png);
+  background-repeat:no-repeat;
+  background-position:2px 5px;
+}
+</style>
 <script type="text/x-mathjax-config">
   MathJax.Hub.Config({tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]}});
 </script>

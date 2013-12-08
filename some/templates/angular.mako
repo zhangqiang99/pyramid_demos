@@ -41,7 +41,7 @@ app.controller('StartUpController', function($scope, $http, myService, mypostSer
                 
          };
          $scope.addhtml = function(){
-                $scope.customHtml = '<ul><li>Mahesh</li></ul>';
+                $scope.customHtml = $scope.yourName;
 	 
          };
          $scope.tabs = [

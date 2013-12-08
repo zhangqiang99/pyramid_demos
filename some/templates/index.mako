@@ -130,7 +130,7 @@ Recommendation: {{needed}}
 <div ng-controller="SimpleAjaxController">
   <button ng-click="makeRequest()">Make request</button>
   <pre style="overflow: hidden; height: 250px; border:1px solid #eee;">
-    Request result: {{ beers }}
+    Request result: {{beers}}
   </pre>
 </div>
 <div ng-controller='DeathrayMenuController'>
