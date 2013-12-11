@@ -55,7 +55,7 @@ def mark1(request):
         }
 
 @view_config(route_name='zippy', renderer="zippy.mako")
-def mark1(request):
+def zippy(request):
     return {
         }
 

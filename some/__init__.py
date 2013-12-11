@@ -31,7 +31,7 @@ def main(global_config, **settings):
     config.add_route('new', '/new')
     config.add_route('ajax2', '/ajax2')
     config.add_route('ajax3', '/ajax3.json')
-    config.add_route('updates', '/updates.json')
+    config.add_route('updates', '/updates')
     config.add_route('servertime', '/servertime')
     config.add_route('ajaxtest', '/ajaxtest/{mine}')
     config.add_route('comment', '/comment/{mine}')
