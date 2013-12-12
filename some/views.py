@@ -59,6 +59,11 @@ def zippy(request):
     return {
         }
 
+@view_config(route_name='zippy1', renderer="zippy1.mako")
+def zippy1(request):
+    return {
+        }
+
 @view_config(route_name='version', renderer="version.mako")
 def version(request):
     ver1 = """<p>i love it</p>"""
@@ -193,10 +198,8 @@ def ajax3(request):
 
 @view_config(route_name='updates',renderer="json")
 def updates(request):
-    return [
-        "mahesh",
-        "asoke",
-        ]
+    return ["Bachelor of Science","Bachelor of Science in Accounting","Bachelor of Science in Business","Bachelor of Science in Business\/Accounting","Bachelor of Science in Business\/Administration","Bachelor of Science in Business\/Communications","Bachelor of Science in Business\/e-Business","Bachelor of Science in Business\/Finance","Bachelor of Science in Business\/Global Business Management","Bachelor of Science in Business\/Green and Sustainable","Bachelor of Science in Business\/Green and Sustainable Enterprise Management","Bachelor of Science in Business\/Hospitality Management","Bachelor of Science in Business\/Human Resource Management"]
+    
 
 @view_config(route_name='check1', renderer="check1.mako")
 def check1(request):
