@@ -111,6 +111,11 @@ def new(request):
     return {
         }
 
+@view_config(route_name='tags', renderer="tags.mako")
+def tags(request):
+    return {
+        }
+
 @view_config(route_name='test-angular', renderer="test-angular.mako")
 def test_angular(request):
     return {

@@ -16,6 +16,7 @@
         <div class="demo">
           <input class="typeahead" type="text" placeholder="countries">
         </div>
+   
   </body>
 </html>
 
