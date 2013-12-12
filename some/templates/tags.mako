@@ -23,7 +23,7 @@ input {
 }
 
     </style>
-    <script src="http://code.angularjs.org/1.0.3/angular.js"></script>
+    <script src="http://code.angularjs.org/1.2.4/angular.js"></script>
     <script type="text/javascript">
     var app = angular.module('myApp',[]);
 
