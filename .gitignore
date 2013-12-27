@@ -4,3 +4,4 @@ __pycache__
 *.mako~
 *.py[cod]
 *.ini[cod]
+*.ini~
