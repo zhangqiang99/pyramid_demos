@@ -1,2 +1,5 @@
 *.pyc
 *.py~
+__pycache__
+*.mako~
+*.py[cod]
