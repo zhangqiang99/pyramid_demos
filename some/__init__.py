@@ -23,7 +23,7 @@ def main(global_config, **settings):
     config.add_route('ajax1', '/ajax1')
     config.add_route('zippy', '/zippy')
     config.add_route('zippy1', '/zippy1')
-    config.add_route('tags', '/tags')
+    config.add_route('angular_tags', '/angular_tags')
     config.add_route('angular', '/angular')
     config.add_route('reboot', '/reboot')
     config.add_route('test-angular', '/test-angular')

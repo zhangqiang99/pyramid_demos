@@ -286,8 +286,8 @@ def comment(request):
 
 @view_config(route_name="single_file_upload", renderer='single_file_upload.mako')
 def single_file_upload(request):
-  """View for demonstrating single file upload
-  """
+    """View for demonstrating single file upload
+    """
     if request.method == "POST":
         here = os.path.dirname(os.path.abspath(__file__))
         upload_directory = os.path.join(here, 'uploads')

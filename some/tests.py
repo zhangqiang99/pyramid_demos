@@ -53,3 +53,4 @@ class TestMyViewFailureCondition(unittest.TestCase):
         request = testing.DummyRequest()
         info = my_view(request)
         self.assertEqual(info.status_int, 500)
+        
