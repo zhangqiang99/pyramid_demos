@@ -47,6 +47,54 @@ After you fix the problem, please restart the Pyramid application to
 try it again.
 """
 
+@view_config(route_name="single_file_upload", renderer='single_file_upload.mako')
+def single_file_upload(request):
+    """View for demonstrating single file upload
+    """
+    if request.method == "POST":
+        here = os.path.dirname(os.path.abspath(__file__))
+        upload_directory = os.path.join(here, 'uploads')
+        print(upload_directory)
+        my_filename = request.POST['fileupload'].filename
+        my_file = request.POST['fileupload'].file
+        f = my_file.read()
+        print(len(f))
+        if len(f)> 500:
+            print("this is too big")
+        print(my_file)
+        saved_file = str(upload_directory) +'/'+ str(my_filename)
+        print(saved_file)
+        perm_file = open(saved_file, 'wb')
+        shutil.copyfileobj(my_file, perm_file)
+        my_file.close()
+        perm_file.close()
+        url = request.route_url('mark1')
+        return HTTPFound(location= url)
+    return {}
+
+@view_config(route_name="multiple_file_upload", renderer='multiple_file_upload.mako')
+def multiple_file_upload(request):
+    """View demonstrating multiple file uploads
+    """
+    if request.method == "POST":
+        here = os.path.dirname(os.path.abspath(__file__))
+        upload_directory = os.path.join(here, 'uploads')
+        uploaded_files = request.POST.getall("fileupload")
+        print(uploaded_files)
+        for item in uploaded_files:
+            print(item.filename)
+            my_file = item.file
+            saved_file = str(upload_directory) +'/'+ str(item.filename)
+            perm_file = open(saved_file, 'wb')
+            shutil.copyfileobj(my_file, perm_file)
+            my_file.close()
+            perm_file.close()                    
+        url = request.route_url('mark1')
+        print("me")
+        return HTTPFound(location= url)
+    return {}
+
+
 @view_config(route_name='mark1', renderer="mark1.mako")
 def mark1(request):
     title = ""
@@ -283,56 +331,4 @@ def ajaxtest(request):
 def comment(request):
     t = request.matchdict['mine']
     return t
-
-@view_config(route_name="single_file_upload", renderer='single_file_upload.mako')
-def single_file_upload(request):
-    """View for demonstrating single file upload
-    """
-    if request.method == "POST":
-        here = os.path.dirname(os.path.abspath(__file__))
-        upload_directory = os.path.join(here, 'uploads')
-        print(upload_directory)
-        my_filename = request.POST['fileupload'].filename
-        my_file = request.POST['fileupload'].file
-        f = my_file.read()
-        print(len(f))
-        if len(f)> 500:
-            print("this is too big")
-        print(my_file)
-        saved_file = str(upload_directory) +'/'+ str(my_filename)
-        print(saved_file)
-        perm_file = open(saved_file, 'wb')
-        print("me")
-        shutil.copyfileobj(my_file, perm_file)
-        print("me")
-        my_file.close()
-        print("me")
-        perm_file.close()
-        print("me")
-        url = request.route_url('mark1')
-        print("me")
-        return HTTPFound(location= url)
-    return {}
-
-@view_config(route_name="multiple_file_upload", renderer='multiple_file_upload.mako')
-def multiple_file_upload(request):
-    """View demonstrating multiple file uploads
-    """
-    if request.method == "POST":
-        here = os.path.dirname(os.path.abspath(__file__))
-        upload_directory = os.path.join(here, 'uploads')
-        uploaded_files = request.POST.getall("fileupload")
-        print(uploaded_files)
-        for item in uploaded_files:
-            print(item.filename)
-            my_file = item.file
-            saved_file = str(upload_directory) +'/'+ str(item.filename)
-            perm_file = open(saved_file, 'wb')
-            shutil.copyfileobj(my_file, perm_file)
-            my_file.close()
-            perm_file.close()                    
-        url = request.route_url('mark1')
-        print("me")
-        return HTTPFound(location= url)
-    return {}
 
