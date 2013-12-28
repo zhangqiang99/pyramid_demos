@@ -269,6 +269,8 @@ def updates_view(request):
 
 @view_config(route_name="servertime", renderer='string')
 def serverTime(request):
+    """Function returning the time
+    """
     return datetime.now()
 
 @view_config(route_name="ajaxtest", renderer='string')
@@ -284,6 +286,8 @@ def comment(request):
 
 @view_config(route_name="single_file_upload", renderer='single_file_upload.mako')
 def single_file_upload(request):
+  """View for demonstrating single file upload
+  """
     if request.method == "POST":
         here = os.path.dirname(os.path.abspath(__file__))
         upload_directory = os.path.join(here, 'uploads')
@@ -312,6 +316,8 @@ def single_file_upload(request):
 
 @view_config(route_name="multiple_file_upload", renderer='multiple_file_upload.mako')
 def multiple_file_upload(request):
+    """View demonstrating multiple file uploads
+    """
     if request.method == "POST":
         here = os.path.dirname(os.path.abspath(__file__))
         upload_directory = os.path.join(here, 'uploads')
