@@ -111,8 +111,11 @@ def new(request):
     return {
         }
 
-@view_config(route_name='tags', renderer="tags.mako")
-def tags(request):
+@view_config(route_name='angular_tags', renderer="angular_tags.mako")
+def angular_tags(request):
+    """View demonstrating angular way of addition and deletion
+    of tags using ajax techniques
+    """
     return {
         }
 
@@ -279,8 +282,8 @@ def comment(request):
     t = request.matchdict['mine']
     return t
 
-@view_config(route_name="filetest", renderer='mark2.mako')
-def filetest(request):
+@view_config(route_name="single_file_upload", renderer='single_file_upload.mako')
+def single_file_upload(request):
     if request.method == "POST":
         here = os.path.dirname(os.path.abspath(__file__))
         upload_directory = os.path.join(here, 'uploads')
@@ -307,8 +310,8 @@ def filetest(request):
         return HTTPFound(location= url)
     return {}
 
-@view_config(route_name="filetest1", renderer='mark3.mako')
-def filetest1(request):
+@view_config(route_name="multiple_file_upload", renderer='multiple_file_upload.mako')
+def multiple_file_upload(request):
     if request.method == "POST":
         here = os.path.dirname(os.path.abspath(__file__))
         upload_directory = os.path.join(here, 'uploads')

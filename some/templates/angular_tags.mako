@@ -24,7 +24,7 @@ input {
 
     </style>
     <script src="http://code.angularjs.org/1.2.4/angular.js"></script>
-    <script type="text/javascript">
+<script type="text/javascript">
     var app = angular.module('myApp',[]);
 
 app.directive('tagManager', function() {
@@ -67,7 +67,7 @@ app.directive('tagManager', function() {
 app.controller('MainCtrl', function ( $scope ) {
     $scope.tags = [ 'cool', 'awesome', 'angular', 'directive', 'javascript', 'html' ];
 });
-    </script>
+</script>
   </head>
   <body>
     <div ng-controller="MainCtrl">
